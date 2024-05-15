@@ -4,7 +4,6 @@ import 'package:device_frame/device_frame.dart';
 import 'package:device_preview/src/state/state.dart';
 import 'package:device_preview/src/state/store.dart';
 import 'package:device_preview/src/storage/storage.dart';
-import 'package:device_preview/src/utilities/assert_inherited_media_query.dart';
 import 'package:device_preview/src/utilities/media_query_observer.dart';
 import 'package:device_preview/src/views/theme.dart';
 import 'package:device_preview/src/views/tool_panel/sections/accessibility.dart';
@@ -451,12 +450,7 @@ class _DevicePreviewState extends State<DevicePreview> {
                   child: Builder(
                     key: _appKey,
                     builder: (context) {
-                      final app = widget.builder(context);
-                      assert(
-                        isWidgetsAppUsingInheritedMediaQuery(app),
-                        'Your widgets app should have its `useInheritedMediaQuery` property set to `true` in order to use DevicePreview.',
-                      );
-                      return app;
+                      return widget.builder(context);
                     },
                   ),
                 ),
